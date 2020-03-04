@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+{% load static i18n %}
+{% block contents %}
+{% include '_global_menu.html' %}
+<div class="uk-container">
+  <div class="uk-width-expand">
+    <div class="uk-section-xlarge">
+      <h1>{% trans 'You have logged out of this site.' %}</h1>
+    </div>
+  </div>
+</div>
+{% endblock contents %}

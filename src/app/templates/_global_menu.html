@@ -1,0 +1,34 @@
+{% load static i18n customtag %}
+{% get_current_language as LANG %}
+<nav class="uk-navbar-container" uk-navbar>
+  <div class="uk-navbar-left uk-margin-left">
+    <ul class="uk-navbar-nav">
+      <div class="uk-margin-top">
+        {% if request.user.is_superuser %}
+        <a href="{% url 'admin:index' %}" class="uk-icon-button" uk-icon="desktop"></a>
+        {% endif %}
+        <a href="{% url 'app:index' %}" class="uk-icon-button" uk-icon="home"></a>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'app:logout' %}" class="uk-icon-button" uk-icon="sign-out"></a>
+        <a href="{% url 'app:dashboard' %}" class="uk-icon-button" uk-icon="settings"></a>
+        {% else %}
+        <a href="{% url 'app:login' %}" class="uk-icon-button" uk-icon="sign-in"></a>
+        <a href="{% url 'app:registration' %}" class="uk-icon-button" uk-icon="users"></a>
+        {% endif %}
+      </div>
+    </ul>
+  </div>
+  <div class="uk-navbar-right uk-margin-right">
+    <ul class="uk-navbar-nav">
+      <li>
+        <a href="#">{% trans 'Languages' %}</a>
+        <div class="uk-navbar-dropdown">
+          <ul class="uk-nav uk-navbar-dropdown-nav">
+            <li class="{% if LANG == 'ja' %}uk-active{% endif %}"><a href="{% translate_url ja %}">日本語</a></li>
+            <li class="{% if LANG == 'en' %}uk-active{% endif %}"><a href="{% translate_url en %}">English</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

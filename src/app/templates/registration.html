@@ -1,0 +1,45 @@
+{% extends "_base.html" %}
+{% load static i18n widget_tweaks %}
+{% block contents %}
+{% include '_global_menu.html' %}
+<div class="uk-container">
+  <ul class="uk-breadcrumb uk-margin-top">
+    <li><a href="{% url 'app:index' %}">{% trans 'Home' %}</a></li>
+    <li>{% trans 'Registration' %}</li>
+  </ul>
+  <div class="uk-width-expand">
+    <div class="uk-section-xlarge">
+      <form class="uk-align-center" style="width:480px" method="post" action="{% url 'app:registration' %}">
+        {% csrf_token %}
+        <fieldset class="uk-fieldset">
+
+          <legend class="uk-legend">{% trans 'Registration' %}</legend>
+
+          <div class="uk-margin">
+            <label class="uk-form-label">{{ form.username.label }}</label>
+            {{ form.username|add_class:"uk-input"}}
+            {% include '_input_alert.html' with errors=form.username.errors %}
+          </div>
+
+          <div class="uk-margin">
+            <label class="uk-form-label">{{ form.password1.label }}</label>
+            {{ form.password1|add_class:"uk-input"}}
+            {% include '_input_alert.html' with errors=form.password1.errors %}
+          </div>
+
+          <div class="uk-margin">
+            <label class="uk-form-label">{{ form.password2.label }}</label>
+            {{ form.password2|add_class:"uk-input"}}
+            {% include '_input_alert.html' with errors=form.password2.errors %}
+          </div>
+
+          <div class="uk-margin uk-align-right">
+            <button class="uk-button uk-button-primary uk-button-large">{% trans 'Register' %}</button>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock contents %}

@@ -1,0 +1,30 @@
+{% extends "_base.html" %}
+{% load static i18n widget_tweaks %}
+{% block contents %}
+{% include '_global_menu.html' %}
+<div class="uk-container">
+  <ul class="uk-breadcrumb uk-margin-top">
+    <li><a href="{% url 'app:index' %}">{% trans 'Home' %}</a></li>
+    <li>{% trans 'Dashboard' %}</li>
+  </ul>
+</div>
+<div class="uk-container uk-margin-xlarge-top">
+  <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <h3 class="uk-card-title">Free Contents</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <a href="{% url 'app:free-content' %}">Click Here</a>
+
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-card-primary uk-card-body">
+        <h3 class="uk-card-title">Require Subscripion</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <a href="{% url 'app:paid-content' %}">Click Here</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock contents %}

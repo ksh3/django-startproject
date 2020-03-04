@@ -1,0 +1,37 @@
+steps:
+  - id: "Depend Services"
+    name: "docker/compose:1.19.0"
+    args: ["up", "-d"]
+  - id: "Test"
+    name: "gcr.io/$PROJECT_ID/cloud-builders/pytest"
+    args: ["pytest", "-v", "-s"]
+    env:
+      - DEBUG=1
+      - DATABASE_USER=docker
+      - DATABASE_NAME=docker
+      - DATABASE_USER=docker
+      - DATABASE_PASSWORD=docker
+      - DATABASE_HOST=postgres
+      - GS_PROJECT_ID=$PROJECT_ID
+      - GS_BUCKET_NAME=$BUCKET_NAME
+  - id: "Build Image"
+    name: "gcr.io/kaniko-project/executor"
+    args:
+      - --destination=gcr.io/$PROJECT_ID/django-startproject/app:$COMMIT_SHA
+  - id: "Deploy"
+    name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "beta"
+      - "run"
+      - "deploy"
+      - "django-startproject"
+      - "--allow-unauthenticated"
+      - "--platform"
+      - "managed"
+      - "--project"
+      - "$PROJECT_ID"
+      - "--image"
+      - "gcr.io/$PROJECT_ID/django-startproject/app:$COMMIT_SHA"
+      - "--region"
+      - "asia-northeast1"
+timeout: 900s

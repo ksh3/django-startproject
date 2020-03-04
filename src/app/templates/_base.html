@@ -1,0 +1,91 @@
+{% load static i18n %}
+{% get_current_language as LANG %}
+<!DOCTYPE html>
+<html lang="{{ LANG }}" prefix="og: http://ogp.me/ns#">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#f19797">
+    <meta name="msapplication-square70x70logo" content="{% static 'img/favicons/site-tile-70x70.png' %}">
+    <meta name="msapplication-square150x150logo" content="{% static 'img/favicons/site-tile-150x150.png' %}">
+    <meta name="msapplication-wide310x150logo" content="{% static 'img/favicons/site-tile-310x150.png' %}">
+    <meta name="msapplication-square310x310logo" content="{% static 'img/favicons/site-tile-310x310.png' %}">
+    <meta name="msapplication-TileColor" content="#0078d7">
+    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="{% static 'img/favicons/favicon.ico' %}">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="{% static 'img/favicons/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'img/favicons/apple-touch-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'img/favicons/apple-touch-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/favicons/apple-touch-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/favicons/apple-touch-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/favicons/apple-touch-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'img/favicons/apple-touch-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/favicons/apple-touch-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'img/favicons/apple-touch-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="36x36" href="{% static 'img/favicons/android-chrome-36x36.png' %}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'img/favicons/android-chrome-48x48.png' %}">
+    <link rel="icon" type="image/png" sizes="72x72" href="{% static 'img/favicons/android-chrome-72x72.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'img/favicons/android-chrome-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="128x128" href="{% static 'img/favicons/android-chrome-128x128.png' %}">
+    <link rel="icon" type="image/png" sizes="144x144" href="{% static 'img/favicons/android-chrome-144x144.png' %}">
+    <link rel="icon" type="image/png" sizes="152x152" href="{% static 'img/favicons/android-chrome-152x152.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicons/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="256x256" href="{% static 'img/favicons/android-chrome-256x256.png' %}">
+    <link rel="icon" type="image/png" sizes="384x384" href="{% static 'img/favicons/android-chrome-384x384.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'img/favicons/android-chrome-512x512.png' %}">
+    <link rel="icon" type="image/png" sizes="36x36" href="{% static 'img/favicons/icon-36x36.png' %}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'img/favicons/icon-48x48.png' %}">
+    <link rel="icon" type="image/png" sizes="72x72" href="{% static 'img/favicons/icon-72x72.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'img/favicons/icon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="128x128" href="{% static 'img/favicons/icon-128x128.png' %}">
+    <link rel="icon" type="image/png" sizes="144x144" href="{% static 'img/favicons/icon-144x144.png' %}">
+    <link rel="icon" type="image/png" sizes="152x152" href="{% static 'img/favicons/icon-152x152.png' %}">
+    <link rel="icon" type="image/png" sizes="160x160" href="{% static 'img/favicons/icon-160x160.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicons/icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="196x196" href="{% static 'img/favicons/icon-196x196.png' %}">
+    <link rel="icon" type="image/png" sizes="256x256" href="{% static 'img/favicons/icon-256x256.png' %}">
+    <link rel="icon" type="image/png" sizes="384x384" href="{% static 'img/favicons/icon-384x384.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'img/favicons/icon-512x512.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/icon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="24x24" href="{% static 'img/favicons/icon-24x24.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/icon-32x32.png' %}">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <title>{% block title %}TITLE{% endblock title %}</title>
+    <meta name="description" content="{% block desc %}DESCRIPTION{% endblock desc %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:type" content="{% block og_type %}website{% endblock og_type %}" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:site_name" content="{% block og_site %}TITLE{% endblock og_site %}" />
+    <meta property="og:locale" content="{{ LANG }}" />
+    <meta property="og:title" content="{% block og_title %}TITLE{% endblock og_title %}" />
+    <meta property="og:description" content="{% block og_desc %}TITLE{% endblock og_desc %}" />
+    <meta property="og:image" content="{% block og_image %}{{ request.build_absolute_uri }}{% static 'img/bg.jpg' %}{% endblock og_image %}" />
+    {% block extra_meta %}
+    <meta name="twitter:site" content="{% block site %}TITLE{% endblock site %}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="{{ request.build_absolute_uri }}" />
+    <meta name="twitter:title" content="TITLE" />
+    <meta name="twitter:description" content="DESCRIPTION" />
+    <meta name="twitter:image" content="{% static 'img/bg.jpg' %}" />
+    {% endblock extra_meta %}
+    <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
+    <script src="{% static 'js/uikit.min.js' %}"></script>
+    <script src="{% static 'js/uikit-icons.min.js' %}"></script>
+    {% block extra_head %}{% endblock extra_head %}
+  </head>
+
+  <body>
+    <main id="app">
+      {% block contents %}{% endblock contents %}
+    </main>
+    {% include '_footer.html' %}
+    {% block extra_js %}{% endblock extra_js %}
+    <script>
+      window.addEventListener('load', function (event) {
+        document.getElementById('app').style.minHeight = window.innerHeight - 176 - 70 + "px";
+      });
+    </script>
+  </body>
+
+</html>
