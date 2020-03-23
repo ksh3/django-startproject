@@ -1,8 +1,11 @@
 steps:
-  - id: "Depend Services"
+  # アプリが依存しているサービス群をビルド環境（ローカルネットワーク）に作成、起動
+  - id: "INJECT"
     name: "gcr.io/$PROJECT_ID/cloud-builders/docker-compose"
     args: ["up", "-d"]
-  - id: "Test"
+  # ベースとなるPythonイメージを用意してビルド時間を短縮
+  # ビルド時間にこだわらないのであれば次のステップ[Build Image]と入れ替えて、イメージを呼び出してテストすればベースのメンテする手間は省ける
+  - id: "TEST"
     name: "gcr.io/$PROJECT_ID/cloud-builders/pytest"
     args: ["pytest", "-v", "-s"]
     env:
@@ -13,11 +16,13 @@ steps:
       - DATABASE_HOST=postgres
       - GS_PROJECT_ID=$PROJECT_ID
       - GS_BUCKET_NAME=$PROJECT_ID-$BRANCH_NAME
-  - id: "Build Image"
+  # Container Registry(GCP)にイメージ作成
+  - id: "BUILD"
     name: "gcr.io/kaniko-project/executor"
     args:
       - --destination=gcr.io/$PROJECT_ID/django-startproject/app:$COMMIT_SHA
-  # - id: "Deploy"
+  # CloudRunへデプロイ
+  # - id: "DEPLOY"
   #   name: "gcr.io/cloud-builders/gcloud"
   #   args:
   #     - "beta"
@@ -33,4 +38,5 @@ steps:
   #     - "gcr.io/$PROJECT_ID/django-startproject/app:$COMMIT_SHA"
   #     - "--region"
   #     - "asia-northeast1"
+# Buildのタイムアウト時間
 timeout: 900s
