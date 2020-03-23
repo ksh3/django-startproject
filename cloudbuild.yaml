@@ -6,7 +6,7 @@ steps:
     name: "gcr.io/$PROJECT_ID/cloud-builders/pytest"
     args: ["pytest", "-v", "-s"]
     env:
-      - DEBUG=1
+      - DEBUG=0
       - DATABASE_USER=docker
       - DATABASE_NAME=docker
       - DATABASE_USER=docker
