@@ -1,0 +1,10 @@
+FROM python:3.7-buster
+LABEL maintainer loFT LLC<info@loftllc.dev>
+LABEL author __ksh__<info@loftllc.dev>
+RUN pip install --upgrade pip
+RUN pip install pipenv
+RUN mkdir -p /opt/app
+WORKDIR /opt/app
+COPY Pipfile .
+RUN pipenv install --dev --deploy --system --skip-lock
+CMD ["pytest", "-s", "-v"]

@@ -41,7 +41,28 @@ class User(AbstractUser):
     def __str__(self) -> str:
         return self.username
 
-    # FIXME: Define subscriber.
     @property
     def is_subscriber(self) -> bool:
+        if hasattr(self, 'subscription'):
+            return self.subscription.expired_at > timezone.now()
         return False
+
+
+class Subscription(models.Model):
+
+    class Meta:
+        verbose_name = _('Subscription')
+        verbose_name_plural = _('Subscriptions')
+        ordering = ['-id']
+
+    user = models.OneToOneField(
+        "app.User", verbose_name=_("Users"), on_delete=models.CASCADE)
+    expired_at = models.DateTimeField(_("Expired at"))
+
+    def cancel(self) -> None:
+        self.expired_at = self.request_cancel_api()
+        self.save()
+
+    def request_cancel_api(self):
+        # TODO: Request cancel API.
+        pass

@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 from django.utils.translation import gettext_lazy as _
 
-from . models import User
+from . models import User, Subscription
 
 logger = logging.getLogger(__name__)
 
@@ -18,3 +18,10 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = ('username', )
         field_classes = {'username': UsernameField}
+
+
+class SubscriptionForm(forms.ModelForm):
+
+    class Meta:
+        model = Subscription
+        exclude = ['user', 'expired_at']

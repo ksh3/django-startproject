@@ -8,8 +8,8 @@ services:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: docker
-## Google cloud build network,
-# networks:
-#   default:
-#     external:
-#       name: cloudbuild
+# Google cloud build network,
+networks:
+  default:
+    external:
+      name: cloudbuild
